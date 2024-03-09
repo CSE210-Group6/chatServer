@@ -1,5 +1,8 @@
 # Middle layer
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Test](badge.svg)
+
 ## Overview
 
 This API provides endpoints for managing user accounts, including creation, authentication, data retrieval, and updates. It uses standard HTTP methods and returns JSON-formatted responses.
