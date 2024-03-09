@@ -36,7 +36,7 @@ export default {
 				headers: {
 					"Access-Control-Allow-Origin": request.headers.get('Origin'), // Adjust this to be more restrictive if needed
 					"Access-Control-Allow-Methods": "GET, POST, OPTIONS", // Include other methods your API needs
-					"Access-Control-Allow-Headers": "Content-Type", // Add other headers your API expects
+					"Access-Control-Allow-Headers": "Content-Type, Authorization", // Add other headers your API expects
 				},
 			})
 		}
