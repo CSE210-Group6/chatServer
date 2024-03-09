@@ -52,13 +52,13 @@ export default {
 		} else if (path === "/history") {
 			return history(request, env);
 		} else {
-			return new Response("Not Found", normalHeader);
+			return new Response("Not Found", notFoundHeader);
 		}
 	}
 }
 
 async function signup(request, env) {
-	if (request.method !== "POST") return new Response("Method Not Allowed", NotAvailableHeader);
+	if (request.method !== "POST") return new Response("Method Not Allowed", normalHeader);
 	let { user, password } = await request.json();
 
 	if (!user || !password) {
@@ -91,7 +91,7 @@ function getUser(request) {
 }
 
 async function login(request, env) {
-	if (request.method !== "GET") return new Response("Method Not Allowed", NotAvailableHeader);
+	if (request.method !== "GET") return new Response("Method Not Allowed", normalHeader);
 
 	let user = getUser(request)
 	let password = request.headers.get('Authorization');
@@ -122,7 +122,7 @@ async function login(request, env) {
 }
 
 async function getinfo(request, env) {
-	if (request.method !== "GET") return new Response("Method Not Allowed", NotAvailableHeader);
+	if (request.method !== "GET") return new Response("Method Not Allowed", normalHeader);
 
 	let user = getUser(request)
 	const authentication = request.headers.get('Authorization');
@@ -152,7 +152,7 @@ function removeItemOnce(arr, value) {
 }
 
 async function signout(request, env) {
-	if (request.method !== "DELETE") return new Response("Method Not Allowed", NotAvailableHeader);
+	if (request.method !== "DELETE") return new Response("Method Not Allowed", normalHeader);
 	let user = getUser(request)
 	const authentication = request.headers.get('Authorization');
 
@@ -200,7 +200,7 @@ async function avatar(request, env) {
 		}
 
 	}
-	return new Response("Method Not Allowed", NotAvailableHeader);
+	return new Response("Method Not Allowed", normalHeader);
 }
 
 // method for uploading avatar
@@ -235,7 +235,7 @@ async function history(request, env) {
 		}
 
 	}
-	return new Response("Method Not Allowed", NotAvailableHeader);
+	return new Response("Method Not Allowed", normalHeader);
 
 }
 
