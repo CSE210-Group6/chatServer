@@ -226,7 +226,6 @@ describe('API handler tests', () => {
         put: vi.fn(), // Mock put to simulate updating the user info
       }
     };
-
     // Calling the handler
     const response = await handler.fetch(mockRequest, mockEnv);
 

@@ -8,11 +8,7 @@
 		"test": "vitest"
 	},
 	"devDependencies": {
-		"miniflare": "^3.20240304.0",
 		"vitest-github-actions-reporter": "^0.11.1",
 		"wrangler": "^3.0.0"
-	},
-	"dependencies": {
-		"jest": "^29.7.0"
 	}
 }
