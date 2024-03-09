@@ -33,9 +33,9 @@ export default {
 		// normalHeader.headers["Access-Control-Allow-Origin"] = request.headers.get('Origin');
 		// NotAvailableHeader.headers["Access-Control-Allow-Origin"] = request.headers.get('Origin');
 		// notFoundHeader.headers["Access-Control-Allow-Origin"] = request.headers.get('Origin');
-		normalHeader.headers["Access-Control-Allow-Origin"] = "http://localhost:8081/";
-		NotAvailableHeader.headers["Access-Control-Allow-Origin"] = "http://localhost:8081/";
-		notFoundHeader.headers["Access-Control-Allow-Origin"] = "http://localhost:8081/";
+		normalHeader.headers["Access-Control-Allow-Origin"] = "http://localhost:8081";
+		NotAvailableHeader.headers["Access-Control-Allow-Origin"] = "http://localhost:8081";
+		notFoundHeader.headers["Access-Control-Allow-Origin"] = "http://localhost:8081";
 		const url = new URL(request.url);
 		const path = url.pathname;
 
