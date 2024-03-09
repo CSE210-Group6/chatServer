@@ -119,6 +119,7 @@ async function login(request, env) {
 
 			let toHeader = JSON.parse(JSON.stringify(normalHeader));
 			toHeader["headers"]["Authorization"] = uuid;
+			toHeader["headers"]["Access-Control-Expose-Headers"] = "Authorization";
 			console.log(toHeader)
 			return new Response(JSON.stringify(toRe), toHeader);
 		} else {
