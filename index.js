@@ -52,7 +52,7 @@ export default {
 		} else if (path === "/history") {
 			return history(request, env);
 		} else {
-			return new Response("Not Found", notFoundHeader);
+			return new Response("Not Found", normalHeader);
 		}
 	}
 }
