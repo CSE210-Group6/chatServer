@@ -4,8 +4,7 @@ let normalHeader = {
 	headers: {
 		'Content-Type': 'application/json;charset=utf-8',
 		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Methods': 'GET,POST,DELETE,OPTIONS',
-		'Access-Control-Allow-Headers': 'GET,POST,DELETE,OPTIONS',
+		'Access-Control-Allow-Methods': 'GET,POST,DELETE'
 	}
 };
 
@@ -15,8 +14,7 @@ let notFoundHeader = {
 	headers: {
 		'Content-Type': 'application/json;charset=utf-8',
 		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Methods': 'GET,POST,DELETE,OPTIONS',
-		'Access-Control-Allow-Headers': 'GET,POST,DELETE,OPTIONS',
+		'Access-Control-Allow-Methods': 'GET,POST,DELETE'
 	}
 };
 
@@ -26,19 +24,26 @@ let NotAvailableHeader = {
 	headers: {
 		'Content-Type': 'application/json;charset=utf-8',
 		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Methods': 'GET,POST,DELETE,OPTIONS',
-		'Access-Control-Allow-Headers': 'GET,POST,DELETE,OPTIONS',
+		'Access-Control-Allow-Methods': 'GET,POST,DELETE'
 	}
 };
 
 export default {
 	async fetch(request, env) {
-		// normalHeader.headers["Access-Control-Allow-Origin"] = request.headers.get('Origin');
-		// NotAvailableHeader.headers["Access-Control-Allow-Origin"] = request.headers.get('Origin');
-		// notFoundHeader.headers["Access-Control-Allow-Origin"] = request.headers.get('Origin');
-		normalHeader.headers["Access-Control-Allow-Origin"] = "http://localhost:8081";
-		NotAvailableHeader.headers["Access-Control-Allow-Origin"] = "http://localhost:8081";
-		notFoundHeader.headers["Access-Control-Allow-Origin"] = "http://localhost:8081";
+		if (request.method === "OPTIONS") {
+			// Make sure to customize these headers to fit your needs.
+			return new Response(null, {
+				headers: {
+					"Access-Control-Allow-Origin": request.headers.get('Origin'), // Adjust this to be more restrictive if needed
+					"Access-Control-Allow-Methods": "GET, POST, OPTIONS", // Include other methods your API needs
+					"Access-Control-Allow-Headers": "Content-Type", // Add other headers your API expects
+				},
+			})
+		}
+
+		normalHeader.headers["Access-Control-Allow-Origin"] = request.headers.get('Origin');
+		NotAvailableHeader.headers["Access-Control-Allow-Origin"] = request.headers.get('Origin');
+		notFoundHeader.headers["Access-Control-Allow-Origin"] = request.headers.get('Origin');
 		const url = new URL(request.url);
 		const path = url.pathname;
 
@@ -61,7 +66,7 @@ export default {
 }
 
 async function signup(request, env) {
-	if (request.method !== "POST") return new Response("Method Not Allowed", normalHeader);
+	if (request.method !== "POST") return new Response("Method Not Allowed", NotAvailableHeader);
 	let { user, password } = await request.json();
 
 	if (!user || !password) {
@@ -94,7 +99,7 @@ function getUser(request) {
 }
 
 async function login(request, env) {
-	if (request.method !== "GET") return new Response("Method Not Allowed", normalHeader);
+	if (request.method !== "GET") return new Response("Method Not Allowed", NotAvailableHeader);
 
 	let user = getUser(request)
 	let password = request.headers.get('Authorization');
@@ -125,7 +130,7 @@ async function login(request, env) {
 }
 
 async function getinfo(request, env) {
-	if (request.method !== "GET") return new Response("Method Not Allowed", normalHeader);
+	if (request.method !== "GET") return new Response("Method Not Allowed", NotAvailableHeader);
 
 	let user = getUser(request)
 	const authentication = request.headers.get('Authorization');
@@ -155,7 +160,7 @@ function removeItemOnce(arr, value) {
 }
 
 async function signout(request, env) {
-	if (request.method !== "DELETE") return new Response("Method Not Allowed", normalHeader);
+	if (request.method !== "DELETE") return new Response("Method Not Allowed", NotAvailableHeader);
 	let user = getUser(request)
 	const authentication = request.headers.get('Authorization');
 
@@ -203,7 +208,7 @@ async function avatar(request, env) {
 		}
 
 	}
-	return new Response("Method Not Allowed", normalHeader);
+	return new Response("Method Not Allowed", NotAvailableHeader);
 }
 
 // method for uploading avatar
@@ -238,7 +243,7 @@ async function history(request, env) {
 		}
 
 	}
-	return new Response("Method Not Allowed", normalHeader);
+	return new Response("Method Not Allowed", NotAvailableHeader);
 
 }
 
