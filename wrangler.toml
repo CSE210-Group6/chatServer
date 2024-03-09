@@ -1,0 +1,7 @@
+name = "chat"
+main = "index.js"
+compatibility_date = "2022-05-03"
+
+kv_namespaces = [
+  { binding = "chat", id = "cf1fe89914b14bbabf4e79467b4166a9" }
+]
