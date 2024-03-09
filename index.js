@@ -4,7 +4,7 @@ let normalHeader = {
 	headers: {
 		'Content-Type': 'application/json;charset=utf-8',
 		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Methods': 'GET,POST,DELETE'
+		'Access-Control-Allow-Methods': 'GET,POST,DELETE,OPTIONS'
 	}
 };
 
@@ -14,7 +14,7 @@ let notFoundHeader = {
 	headers: {
 		'Content-Type': 'application/json;charset=utf-8',
 		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Methods': 'GET,POST,DELETE'
+		'Access-Control-Allow-Methods': 'GET,POST,DELETE,OPTIONS'
 	}
 };
 
@@ -24,7 +24,7 @@ let NotAvailableHeader = {
 	headers: {
 		'Content-Type': 'application/json;charset=utf-8',
 		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Methods': 'GET,POST,DELETE'
+		'Access-Control-Allow-Methods': 'GET,POST,DELETE,OPTIONS'
 	}
 };
 
