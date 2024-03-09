@@ -5,10 +5,11 @@
 	"scripts": {
 		"deploy": "wrangler deploy index.js",
 		"dev": "wrangler dev index.js",
-		"test": "jest"
+		"test": "vitest"
 	},
 	"devDependencies": {
 		"miniflare": "^3.20240304.0",
+		"vitest-github-actions-reporter": "^0.11.1",
 		"wrangler": "^3.0.0"
 	},
 	"dependencies": {
